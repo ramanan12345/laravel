@@ -44,7 +44,23 @@
 
     </fieldset>
 </form>
+<!-- Button trigger modal -->
 
+
+<!-- Modal -->
+<a data-toggle="modal" href="http://laravel4.dev/client/create" data-target="#myModal">Click me !</a>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
           
 		</div>
 @stop

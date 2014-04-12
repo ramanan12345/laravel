@@ -42,7 +42,8 @@
     {{ HTML::script('js/bootstrap.min.js')}}
 
 
-   
+        <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+
 
     <!-- Chosen -->
     {{ HTML::style('docsupport/prism.css'); }}
@@ -50,6 +51,27 @@
 
     {{ HTML::script('js/chosen.jquery.js'); }}
     {{ HTML::script('docsupport/prism.js'); }}
+
+    <!-- Overlay Plugin -->
+
+        <!-- pgwmodal -->
+
+          <!-- Stylesheets
+        {{ HTML::style('pgwmodal/pgwmodal.css'); }}
+        {{ HTML::style('pgwmodal/pgwmodal.min.css'); }}-->
+
+        <!--JS
+          {{ HTML::script('pgwmodal/pgwmodal.js')}}
+{{ HTML::script('pgwmodal/pgwmodal.min.js')}} -->
+        <!-- Stylesheets
+        {{ HTML::style('assets/css/styles.css'); }}
+        {{ HTML::style('assets/framewarp/framewarp.css'); }}-->
+
+
+        <!-- JS 
+          {{ HTML::script('assets/js/jquerypp.custom.js')}}
+          {{ HTML::script('assets/framewarp/framewarp.js')}}
+          {{ HTML::script('assets/js/script.js')}}-->
 
 
     <!--[if lt IE 9]>s

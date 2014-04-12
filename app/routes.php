@@ -27,6 +27,16 @@ Route::post('user/reset_password',         'UserController@do_reset_password');
 Route::get( 'user/logout',                 'UserController@logout');
 
 
+Route::get('client/create',	'ClientController@create');
+  Route::any("client/store", [
+        "as"   => "client/store",
+        "uses" => "ClientController@store"
+    ]);
+
+  Route::any("user/frame", [
+        "as"   => "user/frame",
+        "uses" => "UserController@frame"
+    ]);
 // Set Role Based permissions 
 
 // Entrust::routeNeedsPermission( 'user/create*', 'manage_posts' );

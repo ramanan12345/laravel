@@ -1,0 +1,158 @@
+<?php
+
+class TaskController extends \BaseController {
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function index()
+	{
+		//
+      $tasks = DB::table('tasks')->get();
+       
+       
+        foreach ($tasks as $task)
+        {
+            echo ("<div class='registeredusers'><label>Email: ".$task->task_name."</label><br/>"."<label>First Name: ".$task->task_brief."</div>");
+        }
+        echo "</div></div>";    
+	}
+
+	/**
+	** View logged in tasks
+	*/
+    
+	public function viewall() {
+
+
+			  $data["tasks"] = $tasks = Auth::user()->tasks()->paginate(3);
+			
+	        //Comments pagination
+	        $data["tasks_pages"] = $tasks->links();
+
+				
+			 if(Request::ajax())
+				{
+					
+				$html = View::make('tasks.viewtasks', $data)->render();
+				return Response::json(array('html' => $html));
+	        }
+	
+			echo View::make('tasks.viewall')->with('tasks', $tasks);
+	}
+
+        
+
+	/**
+	 * Show the form for creating a new resource.
+	 *
+	 * @return Response
+	 */
+	public function create()
+	{
+		//
+		 $tasks = Auth::user()->tasks;	
+
+		$client_options = DB::table('clients')->orderBy('client_name', 'asc')->lists('client_name','id');
+    	$project_options = DB::table('projects')->orderBy('project_name', 'asc')->lists('project_name','id');
+
+    	$team_options = DB::table('teams')->orderBy('team_member_name', 'asc')->lists('team_member_name','id', 'team_member_category');
+    	$status = DB::table('statuses')->orderBy('rank', 'asc')->lists('status_name', 'id');
+    	$priority = DB::table('priorities')->orderBy('rank', 'asc')->lists('priority_name', 'id');
+    	$tasktypes = DB::table('task_types')->orderBy('rank', 'asc')->lists('type_name', 'id');
+
+		return View::make('tasks.create', array('project_options' => $project_options, 'team_options' => $team_options, 'client_options' => $client_options,'priority' =>  $priority, 'status' => $status, 'tasktypes' => $tasktypes));
+	}		
+
+
+	/**
+	 * Store a newly created resource in storage.
+	 *
+	 * @return Response
+	 */
+	public function store()
+	{
+		//
+		   // validate
+		// read more on validation at http://laravel.com/docs/validation
+		$rules = array(
+			'task_name'       => 'required',
+			'task_brief'      => 'required'
+        );
+        
+		$validator = Validator::make(Input::all(), $rules);
+
+		// process the login
+		if ($validator->fails()) {
+			return Redirect::to('task/create')
+				->withErrors($validator)
+				->withInput(Input::except('password'));
+		} else {
+			// store
+			$task = new Task;
+			$task->user_id = Auth::user()->id;
+			$task->client_id = Input::get('client');
+			$task->project_id = Input::get('project');
+			$task->status_id = Input::get('status');
+			$task->type_id = Input::get('type');
+			$task->priority_id = Input::get('priority');
+			$task->team_id = Input::get('team');
+			$task->task_name = Input::get('task_name');
+			$task->task_brief  = Input::get('task_brief');
+			$task->estimated_start_date = Input::get('estimate_start_date');
+			$task->estimated_end_date = Input::get('estimate_end_date');
+
+			$task->save();
+
+			// redirect
+			Session::flash('message', 'Successfully created Task!');
+			return Redirect::to('profile/');
+	}
+	}
+
+	/**
+	 * Display the specified resource.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function show($id)
+	{
+		// get the Task
+		$task = Task::find($id);
+
+		// show the view and pass the nerd to it
+		return View::make('tasks.show')
+			->with('task', $task);
+	}
+
+	/**
+	 * Show the form for editing the specified resource.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function edit($id)
+	{
+				// get the project
+    $task = Task::find($id);
+
+		// show the edit form and pass the project
+		return View::make('tasks.edit')
+			->with('task', $task);
+	}
+
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function update($id)
+	{
+		//
+	}
+
+}

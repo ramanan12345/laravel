@@ -30,29 +30,29 @@
      <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Project <b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                    <li><a href="http://itempus.dev/project/create">Create</a></li>
-                    <li><a href="http://itempus.dev/project/viewall">View</a></li>
+                    <li><a href="http://laravel4.dev/project/create">Create</a></li>
+                    <li><a href="http://laravel4.dev/project/viewall">View</a></li>
                   </ul>
                 </li>        
                 <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Task <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="http://itempus.dev/task/create">Create</a></li>
-            <li><a href="http://itempus.dev/task/viewall">View</a></li>
+            <li><a href="http://laravel4.dev/task/create">Create</a></li>
+            <li><a href="http://laravel4.dev/task/viewall">View</a></li>
           </ul>
         </li>
         <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Clients <b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                    <li><a href="http://itempus.dev/client/create">Create</a></li>
-                    <li><a href="http://itempus.dev/client/viewall">View</a></li>
+                    <li><a href="http://laravel4.dev/client/create">Create</a></li>
+                    <li><a href="http://laravel4.dev/client/viewall">View</a></li>
                   </ul>
                 </li> 
         <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Teams <b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                    <li><a href="http://itempus.dev/team/create">Create</a></li>
-                    <li><a href="http://itempus.dev/team/viewall">View</a></li>
+                    <li><a href="http://laravel4.dev/team/create">Create</a></li>
+                    <li><a href="http://laravel4.dev/team/viewall">View</a></li>
                   </ul>
                 </li>    
       </ul>
@@ -60,8 +60,8 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user" id="usericon"></span> <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                <li class=""><a href="http://itempus.dev/profile" class="">Profile</a></li>
-                <li class=""><a href="http://itempus.dev/logout" class="">Logout</a></li>             
+                <li class=""><a href="http://laravel4.dev/profile" class="">Profile</a></li>
+                <li class=""><a href="http://laravel4.dev/logout" class="">Logout</a></li>             
         <li class=""><a href="/project/create">Login</a></li>
          </ul>
         </li>

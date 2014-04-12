@@ -230,4 +230,36 @@ class UserController extends BaseController {
         return Redirect::to('/');
     }
 
+
+    /**
+    * Custom functions G.G.
+    *
+    */
+
+      public function profile() {
+         $status = "open";
+        $data["projects"] = $projects = Auth::user()->projects()->where('status', $status) 
+                                    ->paginate(4);
+            
+            //Comments pagination
+            $data["projects_pages"] = $projects->links();
+
+                
+             if(Request::ajax())
+                {
+                    
+                $html = View::make('users.openprojects', $data)->render();
+                return Response::json(array('html' => $html));
+            }
+    
+            echo View::make('users.profile')->with('projects', $projects);
+         
+    }
+public function frame() {
+      
+            echo View::make('users.frame');
+         
+    }
+
+
 }
