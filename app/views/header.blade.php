@@ -58,11 +58,13 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user" id="usericon"></span> <b class="caret"></b></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">@if (Auth::check())<span class="glyphicon glyphicon-user" id="usericon"></span> {{ Auth::user()->username }} <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                 <li class=""><a href="http://laravel4.dev/profile" class="">Profile</a></li>
                 <li class=""><a href="http://laravel4.dev/logout" class="">Logout</a></li>             
+          @else
         <li class=""><a href="/project/create">Login</a></li>
+    @endif
          </ul>
         </li>
       </ul>

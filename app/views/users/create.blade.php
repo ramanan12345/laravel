@@ -3,9 +3,10 @@
         @section("content")
 
 		<div class="container">
-			<h3>Register a user</h3>
-            <p>Fill out a few details below to start using iTempus.</p>
-            <hr />
+
+        <div class="page-header">
+            <h1>Register <small><a data-toggle="modal" href="http://laravel4.dev/user/login" data-target="#myModal">or Login </a></small></h1>
+        </div>
            <form method="POST" action="{{{ (Confide::checkAction('UserController@store')) ?: URL::to('user')  }}}" accept-charset="UTF-8">
     		<input type="hidden" name="_token" value="{{{ Session::getToken() }}}">
 	    <fieldset>
@@ -48,7 +49,7 @@
 
 
 <!-- Modal -->
-<a data-toggle="modal" href="http://laravel4.dev/client/create" data-target="#myModal">Click me !</a>
+Click me !</a>
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

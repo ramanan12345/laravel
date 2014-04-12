@@ -3,6 +3,16 @@
  
    
     <div class="container">
+               <div class="page-header">
+                <h3>Profile</h3>
+        @if (Auth::check())
+          <h5> {{ Auth::user()->username }}</h5>
+
+               @endif
+</div>
+
+
+
         <div class="panel panel-primary one-third column ">
             <div class="panel-heading">
                         <h4>Open Projects</h4>
@@ -11,7 +21,8 @@
                 <strong>Loading...</strong>
             </div>
             <div id="projects" class="panel-body">
-            @include('users.openprojects')
+
+
             </div>
     </div> 
 

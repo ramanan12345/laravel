@@ -59,12 +59,10 @@ class TaskController extends \BaseController {
     	$project_options = DB::table('projects')->orderBy('project_name', 'asc')->lists('project_name','id');
 
     	$team_options = DB::table('teams')->orderBy('team_member_name', 'asc')->lists('team_member_name','id', 'team_member_category');
-    	$status = DB::table('statuses')->orderBy('rank', 'asc')->lists('status_name', 'id');
-    	$priority = DB::table('priorities')->orderBy('rank', 'asc')->lists('priority_name', 'id');
-    	$tasktypes = DB::table('task_types')->orderBy('rank', 'asc')->lists('type_name', 'id');
 
-		return View::make('tasks.create', array('project_options' => $project_options, 'team_options' => $team_options, 'client_options' => $client_options,'priority' =>  $priority, 'status' => $status, 'tasktypes' => $tasktypes));
+		return View::make('tasks.create', array('project_options' => $project_options, 'team_options' => $team_options, 'client_options' => $client_options ));
 	}		
+
 
 
 	/**

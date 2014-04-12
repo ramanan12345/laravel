@@ -30,7 +30,6 @@
  <div class="form-group">
 {{ Form::label('client_surname', 'Client Surname') }}
 {{ Form::text('client_surname', Input::old('client_surname'), array('class' => 'form-control')) }}
-
 </div>
 
  <div class="form-group">

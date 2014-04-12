@@ -36,42 +36,6 @@
 	</div>
 </div>
 
-	 <div class="form-group">
-	 	<div class="four columns">
-	 		    {{ Form::label('select_status', 'Status', array('class' => 'form-label'));	}}
-	 		</div>
-	 		<div class="two-thirds column">
-	@if(count($status)>0)
-	     
-		{{ Form::select('status', $status , Input::old('client'), array('class' => 'tempus_select ', 'id' => 'select_status')) }}
-
-	@endif 
-		</div>
-					
-			</div>
-		 <div class="form-group">
-
-		 	<div class="four columns">
-		 			    {{ Form::label('select_type', 'Type', array('class' => 'form-label'));	}}
-		 	</div>
-		 	<div class="two-thirds column">
-	@if(count($tasktypes)>0)
-	     
-		{{ Form::select('type', $tasktypes , Input::old('client'), array('class' => 'tempus_select ', 'id' => 'select_type')) }}
-
-	@endif 
-			</div>
-	</div>
-
-	<div class="form-group">
-		<div class="four columns">
-	   {{ Form::label('select_priority', 'Priority', array('class' => 'form-label'));	}}
-
-	</div>
-	<div class="two-thirds column">
-			{{ Form::select('priority', $priority , Input::old('client'), array('class' => 'tempus_select ', 'id' => 'select_priority')) }}
-	</div>
-	</div>
 
 
 	<div class="form-group">
@@ -150,10 +114,9 @@
 <script>
 $(document).ready(function($){ 
 	$('#select_client').change(function(){ 
-		$.get("http://itempus.dev/task/clientsprojects",{ 
+		$.get("http://laravrel4.dev/task/clientsprojects",{ 
 			option: $(this).val() 
 			}, function(data) { 
-			console.log(data); 
 			var model = $('#project_select'); 
 			model.empty(); 
 			$.each(data, function(key, value) { 

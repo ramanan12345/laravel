@@ -22,6 +22,7 @@ App::after(function($request, $response)
 	//
 });
 
+
 /*
 |--------------------------------------------------------------------------
 | Authentication Filters
@@ -54,11 +55,17 @@ Route::filter('auth.basic', function()
 | response will be issued if they are, which you may freely change.
 |
 */
-
-Route::filter('guest', function()
+Route::filter('auth', function()
 {
-	if (Auth::check()) return Redirect::to('/');
-});
+if (Auth::guest()) return Redirect::guest('user/login');
+}); 
+// Only authenticated users will be able to access routes that begins with
+// 'admin'. Ex: 'admin/posts', 'admin/categories'.
+Route::when('admin*', 'auth');
+//Route::filter('guest', function()
+//{
+//	if (Auth::check()) return Redirect::to('/');
+//});
 
 /*
 |--------------------------------------------------------------------------

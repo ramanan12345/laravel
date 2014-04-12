@@ -73,12 +73,14 @@ class UserController extends BaseController {
         {
             // If user is logged, redirect to internal 
             // page, change it to '/admin', '/dashboard' or something
-            return Redirect::to('/');
+            return Redirect::to('/profile');
         }
+
         else
         {   
             return View::make(Config::get('confide::login_form'));
         }
+
     }
 
     /**
@@ -237,29 +239,12 @@ class UserController extends BaseController {
     */
 
       public function profile() {
-         $status = "open";
-        $data["projects"] = $projects = Auth::user()->projects()->where('status', $status) 
-                                    ->paginate(4);
-            
-            //Comments pagination
-            $data["projects_pages"] = $projects->links();
 
-                
-             if(Request::ajax())
-                {
-                    
-                $html = View::make('users.openprojects', $data)->render();
-                return Response::json(array('html' => $html));
-            }
     
-            echo View::make('users.profile')->with('projects', $projects);
+            echo View::make('users.profile');
          
     }
-public function frame() {
-      
-            echo View::make('users.frame');
-         
-    }
+
 
 
 }
